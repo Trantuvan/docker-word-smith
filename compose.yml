@@ -11,16 +11,12 @@ services:
     build:
       context: ./words
       dockerfile: Dockerfile
-    ports:
-      - "8080:8080"
     depends_on:
       - db
   db:
     build:
       context: ./db
       dockerfile: Dockerfile
-    ports:
-      - "5432:5432"
     environment:
       - POSTGRES_HOST_AUTH_METHOD=trust
     volumes:
