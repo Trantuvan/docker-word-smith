@@ -3,6 +3,7 @@ services:
     build:
       context: ./web
       dockerfile: Dockerfile
+      target: dev
     ports:
       - ${WEB_PORT:-80}:80
     depends_on:
