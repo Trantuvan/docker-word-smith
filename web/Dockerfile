@@ -1,6 +1,18 @@
 # syntax=docker/dockerfile:1
 
-FROM golang:1.27-alpine AS build
+ARG GO_VERSION=1.27
+
+FROM golang:${GO_VERSION}-alpine AS dev
+
+WORKDIR /app
+
+RUN go install github.com/air-verse/air@latest
+
+COPY . .
+
+CMD ["air"]
+
+FROM golang:${GO_VERSION}-alpine AS build
 
 WORKDIR /app
 RUN --mount=type=cache,target=/go/pkg/mod/ \
