@@ -23,6 +23,6 @@ FROM alpine:3.24
 
 WORKDIR /app
 EXPOSE 80
-COPY static/ static/
 COPY --from=build /app/server /app/
+COPY static/ static/
 CMD [ "./server" ]
